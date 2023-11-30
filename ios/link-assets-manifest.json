@@ -1,0 +1,37 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/Mie Goreng Regular.otf",
+      "sha1": "a44a0a78d33d5c7f71e2d6ce3c3f31e8674e7583"
+    },
+    {
+      "path": "src/assets/fonts/brandon-grotesque-black-58a8a3e824392.otf",
+      "sha1": "0217e9d4487aeaafaa779c97ea93d641e570a36f"
+    },
+    {
+      "path": "src/assets/fonts/brandon-grotesque-bold-italic-58a8a48221563.otf",
+      "sha1": "23b3c5e6c7a740e7199a139c2879b1b63eacb8ca"
+    },
+    {
+      "path": "src/assets/fonts/brandon-grotesque-light-58a8a4b38001d.otf",
+      "sha1": "a8231e2776ee4f0c9834d77f4163a64912e84f89"
+    },
+    {
+      "path": "src/assets/fonts/brandon-grotesque-light-italic-58a8a4ccb88be.otf",
+      "sha1": "ca09ddade8f42775006857a9bb6b5879d0d4ca10"
+    },
+    {
+      "path": "src/assets/fonts/brandon-grotesque-medium-italic-58a8a3c40866a.otf",
+      "sha1": "4038ee844879d19e11c21cfa289b9d3e0ade0680"
+    },
+    {
+      "path": "src/assets/fonts/brandon-grotesque-regular-italic-58a8a456c4724.otf",
+      "sha1": "671d38680ff1ea4f76f73a64a6ae06a4774cbd34"
+    },
+    {
+      "path": "src/assets/fonts/brandon-grotesque-thin-italic-58a8a3a8861fe.otf",
+      "sha1": "f46fd0a2e64d48c44f235179e0efc8fa8da26a6f"
+    }
+  ]
+}
