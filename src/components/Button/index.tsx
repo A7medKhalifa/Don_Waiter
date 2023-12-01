@@ -24,7 +24,7 @@ function Button({
 }) {
   return (
     <>
-      <TouchableOpacity disabled={loading || disabled} onPress={onPress}
+      <TouchableOpacity activeOpacity={.8} disabled={loading || disabled} onPress={onPress}
         style={[
           styles.Container,
           {

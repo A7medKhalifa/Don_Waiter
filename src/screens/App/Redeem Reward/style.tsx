@@ -3,6 +3,10 @@ import { Colors } from "theme/colors";
 import Fonts from "theme/fonsFamily";
 
 export const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#fff'
+    },
     Title: {
         fontSize: 50,
         textTransform: 'uppercase',
@@ -26,12 +30,14 @@ export const styles = StyleSheet.create({
     },
     cameraStyle: {
         height: 520,
-        marginTop: 10
+        marginTop: 10,
+        backgroundColor: '#fff',
     },
     LoaderConatiner: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+        backgroundColor: '#fff',
     },
     button: {
         marginTop: 50

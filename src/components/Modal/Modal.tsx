@@ -6,19 +6,37 @@ import { Qr_initial_values } from 'src/Formik/initialValues'
 import { PriceSchema } from 'src/Formik/schema'
 import Input from 'components/Input'
 import Button from 'components/Button'
-import { styles } from 'screens/App/Scan Qr /style'
+import { styles } from 'screens/App/Redeem Reward/style'
+import { useAppDispatch } from 'store/store'
+import AppThunks from 'store/redeem/thunks'
+import { useNavigation } from '@react-navigation/native'
 
-const Modal = () => {
+const Modal = ({ code, isVisable, setisVisable }: { code: any, isVisable: boolean, setisVisable: any }) => {
+    const dispatch = useAppDispatch();
+    const navigation = useNavigation<any>();
     return (
-        <ReactNativeModal isVisible={true} style={styles.Modal}>
+        <ReactNativeModal isVisible={isVisable} style={styles.Modal}>
             <View style={styles.ModalItem}>
                 <Formik
                     initialValues={Qr_initial_values}
                     validationSchema={PriceSchema}
-                    onSubmit={values => { }} >{props => (
+                    onSubmit={values => {
+                        const formData = new FormData
+                        formData.append('code', code)
+                        formData.append('total_price', values.Totalprice)
+                        dispatch(AppThunks.doReducePoints(formData)).then(() => {
+                            setisVisable(false)
+                            navigation.replace('SelectType')
+                        })
+                    }} >{props => (
                         <>
                             <Input {...props} placeholder="ENTER CLIENT PRICE" Label="Total price" />
-                            <Button style={styles.button} loading={false} fill title="confirm" onPress={() => props.handleSubmit()} />
+                            <Button
+                                fill
+                                title="confirm"
+                                loading={false}
+                                style={styles.button}
+                                onPress={() => props.handleSubmit()} />
                         </>
                     )}</Formik>
             </View>

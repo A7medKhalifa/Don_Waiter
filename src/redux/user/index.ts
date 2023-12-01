@@ -40,5 +40,6 @@ const User = {
   logout: slice.actions.logout,
 };
 
+export const selectIsAuth = (state: RootState) => state.users.isAuth;
 export const selectCurrentUser = (state: RootState) => state.users.currentUser;
 export default User;

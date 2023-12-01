@@ -19,10 +19,27 @@ const slice = createSlice({
       state.success = true
       Toast.show({
         type: "success",
-        text1: 'Redeem Successfully',
+        text1: action.payload?.message
       })
     });
     builder.addCase(thunks.doRedeemReward.rejected, (state, action: any) => {
+      console.log(action.payload.data)
+      Toast.show({
+        type: "error",
+        text1: action.payload.data.message,
+      })
+    })
+
+
+    //doReducePoints
+    builder.addCase(thunks.doReducePoints.fulfilled, (state, action) => {
+      state.success = true
+      Toast.show({
+        type: "success",
+        text1: action.payload?.message
+      })
+    });
+    builder.addCase(thunks.doReducePoints.rejected, (state, action: any) => {
       console.log(action.payload.data)
       Toast.show({
         type: "error",

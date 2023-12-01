@@ -7,6 +7,8 @@ import { SafeAreaProvider, initialWindowMetrics } from 'react-native-safe-area-c
 import { Store } from 'store/store';
 import RedeemRewardScreen from 'screens/App/Redeem Reward';
 import { NavigationContainer } from '@react-navigation/native';
+import SelectTypeScreen from 'screens/App/Main select';
+import RootStackScreens from 'src/Navigation';
 
 const App = () => {
   return (
@@ -14,9 +16,10 @@ const App = () => {
       <Provider store={Store().store}>
         <SafeAreaProvider initialMetrics={initialWindowMetrics}>
           <StatusBar barStyle={'dark-content'} backgroundColor={'#fff'} />
-          <NavigationContainer>
-            <RedeemRewardScreen />
-          </NavigationContainer>
+          {/* <NavigationContainer>
+            <SelectTypeScreen />
+          </NavigationContainer> */}
+          <RootStackScreens />
         </SafeAreaProvider>
         <Toast topOffset={50} />
       </Provider>

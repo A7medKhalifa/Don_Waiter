@@ -10,12 +10,14 @@ import { useAppDispatch } from 'store/store';
 import { useLoadingSelector } from 'store/selectors';
 import Geolocation from '@react-native-community/geolocation';
 import AuthThunks from 'store/user/thunks';
+import { requestLocationPermission } from 'src/HF/Hf';
 
 function Form() {
   const dispatch = useAppDispatch()
   const loading = useLoadingSelector(AuthThunks.doSignIn())
   const [Position, setPostion] = React.useState<any>()
   useEffect(() => {
+    requestLocationPermission()
     Geolocation.getCurrentPosition((position) => {
       setPostion(position?.coords)
     })
@@ -27,11 +29,12 @@ function Form() {
       validationSchema={LoginSchema}
       onSubmit={values => {
         const formData = new FormData()
-        formData.append('email', values.email)
+        formData.append('email', values.email?.toLocaleLowerCase())
         formData.append('password', values.password)
         formData.append('latitude', Position?.latitude)
         formData.append('longitude', Position?.longitude)
 
+        // console.log(formData)
         dispatch(AuthThunks.doSignIn(formData))
       }}>
       {props => (

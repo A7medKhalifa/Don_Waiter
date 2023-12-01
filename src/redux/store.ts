@@ -11,12 +11,12 @@ import { persistStore, persistReducer } from 'redux-persist';
 
 import thunk from 'redux-thunk';
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { EntityKeys } from "./keys";
+import { EntityKeys } from "./schema";
 
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  whitelist: [EntityKeys.AUTH],
+  whitelist: [EntityKeys.USERS],
 }
 
 let persistedReducer = persistReducer(persistConfig, reducer)

@@ -1,65 +1,28 @@
 import { View, Text, ActivityIndicator } from 'react-native'
 import React, { useEffect } from 'react'
-import { check, PERMISSIONS, RESULTS, request } from 'react-native-permissions';
-import { useNavigation } from '@react-navigation/native';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import { Colors } from 'theme/colors';
 import { styles } from './style';
 import Modal from 'components/Modal/Modal';
 
 const ReducePointsScreen = () => {
-    // const dispatch = useAppDispatch();
     const loading = false
-    // const loading = useLoadingSelector(Ticket.thunks.doCheckQRCode);
-    const navigation = useNavigation<any>();
-    useEffect(() => {
-        check(PERMISSIONS.IOS.CAMERA).then(result => {
-            switch (result) {
-                case RESULTS.UNAVAILABLE:
-                    request(PERMISSIONS.IOS.CAMERA);
-                    break;
-                case RESULTS.DENIED:
-                    request(PERMISSIONS.IOS.CAMERA);
-                    break;
-                case RESULTS.LIMITED:
-                    request(PERMISSIONS.IOS.CAMERA);
-                    break;
-                case RESULTS.GRANTED:
-                    console.log('The permission is granted');
-                    break;
-                case RESULTS.BLOCKED:
-                    console.log('The permission is denied and not requestable anymore');
-                    break;
-            }
-        });
-        check(PERMISSIONS.ANDROID.CAMERA).then(result => {
-            switch (result) {
-                case RESULTS.UNAVAILABLE:
-                    request(PERMISSIONS.ANDROID.CAMERA);
-                    break;
-                case RESULTS.DENIED:
-                    request(PERMISSIONS.ANDROID.CAMERA);
-                    break;
-                case RESULTS.LIMITED:
-                    request(PERMISSIONS.ANDROID.CAMERA);
-                    break;
-                case RESULTS.GRANTED:
-                    console.log('The permission is granted');
-                    break;
-                case RESULTS.BLOCKED:
-                    console.log('The permission is denied and not requestable anymore');
-                    break;
-            }
-        });
-    }, []);
+    const [isVisable, setisVisable] = React.useState(false)
+    const [code, setCode] = React.useState('')
+    
     const onSuccess = (e: any) => {
         if (e.data) {
+            setCode(e.data)
         }
     };
 
+    useEffect(() => {
+        code != '' && setisVisable(true)
+    }, [code])
+
     return (
         <>
-            {/* <Modal /> */}
+            <Modal code={code} isVisable={isVisable} setisVisable={setisVisable} />
             {!loading ? (
                 <QRCodeScanner
                     onRead={onSuccess}
