@@ -13,12 +13,10 @@ const ReducePointsScreen = () => {
     const onSuccess = (e: any) => {
         if (e.data) {
             setCode(e.data)
+            setisVisable(true)
         }
     };
 
-    useEffect(() => {
-        code != '' && setisVisable(true)
-    }, [code])
 
     return (
         <>

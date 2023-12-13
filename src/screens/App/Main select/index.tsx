@@ -69,15 +69,14 @@ const SelectTypeScreen = () => {
             </View>
             <Text style={styles.Title}>select type</Text>
 
-            <TouchableOpacity activeOpacity={.8} onPress={() => { setSelectedIndex(0) }} style={[selectedIndex == 0 ? styles.selctedButton : styles.unSelctedButton, { marginTop: 100 }]}>
+            <TouchableOpacity activeOpacity={.8} onPress={() => {navigate('RedeemReward') }} style={[selectedIndex == 0 ? styles.selctedButton : styles.unSelctedButton, { marginTop: 100 }]}>
                 <Text style={selectedIndex == 0 ? styles.selectedButtonTitle : styles.unSelctedButtonTitle}>Redeem Reward</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity activeOpacity={.8} onPress={() => { setSelectedIndex(1) }} style={[selectedIndex == 1 ? styles.selctedButton : styles.unSelctedButton, { marginTop: 40, }]}>
+            <TouchableOpacity activeOpacity={.8} onPress={() => { navigate('ReducePoints') }} style={[selectedIndex == 1 ? styles.selctedButton : styles.unSelctedButton, { marginTop: 40, }]}>
                 <Text style={selectedIndex == 1 ? styles.selectedButtonTitle : styles.unSelctedButtonTitle}>Reduce Points</Text>
             </TouchableOpacity>
 
-            <Button onPress={() => selectedIndex == 0 ? navigate('RedeemReward') : navigate('ReducePoints')} fill style={styles.button} title='confirm' />
         </SafeAreaView>
     )
 }

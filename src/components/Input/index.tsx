@@ -56,7 +56,7 @@ export default function Input({
           onBlur={() => setFocus(false)}
           placeholderTextColor={Colors().border}
           style={[styles.InputStyle, { width: secureTextEntry ? '87.5%' : code ? '77%' : '100%', }]}
-          autoCapitalize='none'
+          autoCapitalize='characters'
           secureTextEntry={secureTextEntry ? secure : false}
           onChangeText={handleChange(Label.replace("-", ' ').replace(/\s/g, ''))}
         />

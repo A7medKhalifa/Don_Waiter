@@ -14,6 +14,7 @@ import { useNavigation } from '@react-navigation/native'
 const Modal = ({ code, isVisable, setisVisable }: { code: any, isVisable: boolean, setisVisable: any }) => {
     const dispatch = useAppDispatch();
     const navigation = useNavigation<any>();
+    const [load, setLoad] = React.useState(false)
     return (
         <ReactNativeModal isVisible={isVisable} style={styles.Modal}>
             <View style={styles.ModalItem}>
@@ -21,12 +22,16 @@ const Modal = ({ code, isVisable, setisVisable }: { code: any, isVisable: boolea
                     initialValues={Qr_initial_values}
                     validationSchema={PriceSchema}
                     onSubmit={values => {
+                        setLoad(true)
                         const formData = new FormData
                         formData.append('code', code)
                         formData.append('total_price', values.Totalprice)
                         dispatch(AppThunks.doReducePoints(formData)).then(() => {
                             setisVisable(false)
-                            navigation.replace('SelectType')
+                            setLoad(false)
+                            setTimeout(() => {
+                                navigation.replace('SelectType')
+                            }, 2000);
                         })
                     }} >{props => (
                         <>
@@ -34,7 +39,7 @@ const Modal = ({ code, isVisable, setisVisable }: { code: any, isVisable: boolea
                             <Button
                                 fill
                                 title="confirm"
-                                loading={false}
+                                loading={load}
                                 style={styles.button}
                                 onPress={() => props.handleSubmit()} />
                         </>
